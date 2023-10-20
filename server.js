@@ -7,7 +7,9 @@ var logger = require('morgan');
 require('dotenv').config();
 require('./config/database')
 
+// import the info from routes/index, which handles the homepage
 var indexRouter = require('./routes/index');
+// import from flightsRouter
 var flightsRouter = require('./routes/flightsRouter');
 
 var app = express();
@@ -22,6 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// mount both of the router files. Meaning:
+// tell our server what request methods to listen for & on
+// what specific path. As well as what to do with those
+// requests
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
 

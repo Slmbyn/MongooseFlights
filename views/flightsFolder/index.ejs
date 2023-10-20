@@ -4,15 +4,18 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Release Year</th>
-      <th>Rating</th>
-      <th>Cast</th>
-      <th>Now Showing</th>
+      <th>Airline</th>
+      <th>Airport</th>
+      <th>Flight Number</th>
+      <th>Departure</th>
     </tr>
   </thead>
   <tbody>
-    <% flights.forEach(function(f) { %>
+    <!-- get the data that was pulled using .find(). Loop
+        through it using forEach in order to grab the specific piece of
+        data that we want and then organize it on the
+        page in the following way: -->
+    <% flightsData.forEach(function(f) { %>
       <tr>
         <td><%= f.airline %></td>
         <td><%= f.airport %></td>
