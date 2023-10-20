@@ -1,4 +1,3 @@
-
 // import the model we created from the models file that has
 // what we want
 const flightModel = require('../models/flight')
@@ -15,7 +14,7 @@ module.exports = {
 
 // function to show all of the flights & their info
 async function index(req, res) {
-    // go to the data in the model we want, use .find
+    // get the data from the model we want, use .find
     // with an empty {}, which says to grab all the data and
     // dont bother filtering it. BUT also 'await' doing anything
     // else until you're done grabbing all the data
