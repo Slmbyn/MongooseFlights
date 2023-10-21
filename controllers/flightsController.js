@@ -6,7 +6,8 @@ const flightModel = require('../models/flight')
 module.exports = {
     new: newFlight,
     create,
-    index
+    index,
+    show
 }
 
 // create each of the functions that are being exported
@@ -49,5 +50,36 @@ async function create(req, res) {
     } catch (err) {
         // if there's something wrong then send the error message
         console.log(err);
+    }
+}
+
+// when the 'detail' link is clicked on the 'all flights page'
+// the user is routed to the show.ejs page
+// where they will see all of the properties for that flight
+// async function show(req, res) {
+//     // get the data for the flight clicked
+//     const flightData = await flightModel.findById(req.params.id);
+//     console.log('Flight Data:', flightData)
+//     // render that data on the show.ejs page
+//     res.render('flightsFolder/show', { title: 'Flight Detail', flightData });
+// }
+
+async function show(req, res) {
+    try {
+        // Attempt to get the data for the flight clicked
+        const flightData = await flightModel.findById(req.params.id);
+
+        // Check if flightData is null
+        if (!flightData) {
+            // Handle the case where no data is found
+            return res.status(404).send('Flight not found');
+        }
+
+        // Render the data on the show.ejs page
+        res.render('flightsFolder/show', { title: 'Flight Detail', flightData });
+    } catch (error) {
+        // Handle any other errors that might occur during the database query
+        console.error(error);
+        res.status(500).send('Internal Server Error');
     }
 }
