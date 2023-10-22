@@ -7,10 +7,11 @@ module.exports = {
     new: newFlight,
     create,
     index,
-    show
+    show,
 }
 
 // create each of the functions that are being exported
+
 
 
 // function to show all of the flights & their info
@@ -56,30 +57,35 @@ async function create(req, res) {
 // when the 'detail' link is clicked on the 'all flights page'
 // the user is routed to the show.ejs page
 // where they will see all of the properties for that flight
-// async function show(req, res) {
-//     // get the data for the flight clicked
-//     const flightData = await flightModel.findById(req.params.id);
-//     console.log('Flight Data:', flightData)
-//     // render that data on the show.ejs page
-//     res.render('flightsFolder/show', { title: 'Flight Detail', flightData });
-// }
-
 async function show(req, res) {
     try {
         // Attempt to get the data for the flight clicked
         const flightData = await flightModel.findById(req.params.id);
-
-        // Check if flightData is null
-        if (!flightData) {
-            // Handle the case where no data is found
-            return res.status(404).send('Flight not found');
-        }
-
+        console.log('Flight Data:', flightData)
         // Render the data on the show.ejs page
-        res.render('flightsFolder/show', { title: 'Flight Detail', flightData });
+        res.render('flightsFolder/show', { flightData });
     } catch (error) {
         // Handle any other errors that might occur during the database query
         console.error(error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send('Error');
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  // Check if flightData is null
+//  if (!flightData) {
+//     // Handle the case where no data is found
+//     return res.status(404).send('Flight not found');
+// }

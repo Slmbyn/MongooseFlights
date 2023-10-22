@@ -11,6 +11,8 @@ require('./config/database')
 var indexRouter = require('./routes/index');
 // import from flightsRouter
 var flightsRouter = require('./routes/flightsRouter');
+// import from arrivalRouter
+var arrivalRouter = require('./routes/arrivalRouter')
 
 var app = express();
 
@@ -30,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // requests
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
+app.use('/', arrivalRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

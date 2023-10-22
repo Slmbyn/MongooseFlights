@@ -1,15 +1,33 @@
 <%- include('../partials/header') %>
-
+<h2>Flight Details</h2>
     <section id="show-page">
-        <div>Airline: </div>
-        <div><%= flightData.airline %></div>
-        <div>Airport: </div>
-        <div><%= flightData.airport %></div>
-        <div>Flight Number: </div>
-        <div><%= flightData.flightNo %></div>
-        <div>Departs: </div>
-        <div><%= flightData.departs %></div>
-        <div>Destination: </div>
-        <div><%= flightData.destination %></div>
+        <div><b>Airline:</b> &nbsp;<%= flightData.airline %></div>
+        <div><b>Airport:</b> &nbsp;<%= flightData.airport %></div>
+        <div><b>Flight Number:</b> &nbsp;<%= flightData.flightNo %></div>
+        <div><b>Departs: </b> &nbsp;<%= flightData.departs %></div>
+        <div><b>Destination:</b> &nbsp;<%= flightData.destination %></div>
     </section>
+
+
+<h2>Add Arrival Info</h2>
+    <form action="/flights/<%= flightData.id %>" method="POST">
+        <label>Destination
+          <select name="destinations">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SFO">SFO</option>
+            <option value="OAK">OAK</option>
+          </select>
+        </label><br>
+      
+        <label>Arrival
+            <input type="date" name="departs">
+            <input type="time" name="departs">
+        </label><br>
+      
+        <button type="submit">Add Info</button>
+      
+    </form>
 </body>

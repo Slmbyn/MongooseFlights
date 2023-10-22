@@ -29,7 +29,8 @@ router.get('/new', flightsCtrl.new);
 router.post('/', flightsCtrl.create);
 
 // when 'detail' link is clicked, run the show function
-router.get('/show/:id', flightsCtrl.show);
+router.get('/:id', flightsCtrl.show);
+
 
 //make everything in this file availabe for import
 module.exports = router;
