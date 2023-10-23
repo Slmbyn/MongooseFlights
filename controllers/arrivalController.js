@@ -5,13 +5,16 @@ module.exports = {
 }
 
 async function create(req, res) {
-    const arrivalData = await flightModel.findById(req.params.id);
-    arrivalData.destinations.push(req.body);
-    console.log('arrival: ', arrivalData)
+    console.log('this function is running')
+    const flightData = await flightModel.findById(req.params.id);
+    flightData.destinations.push(req.body);
+    console.log('arrival: ', flightData)
     try {
-        await arrivalData.save();
+        await flightData.save();
     } catch (err) {
         console.log(err);
     }
-    res.redirect(`/flightsFolder/${arrivalData._id}`)
+    res.render('flightsFolder/show', { flightData });
+    // res.redirect(`/flightsFolder/show/${arrivalData._id}`)
 }
+

@@ -8,6 +8,6 @@ const arrivalCtrl = require('../controllers/arrivalController')
 
 
 // when 'add info' button is pressed on flight detail page
-router.post('/:id', arrivalCtrl.create)
+router.post('/flights/:id', arrivalCtrl.create)
 
 module.exports = router;

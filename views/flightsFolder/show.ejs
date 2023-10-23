@@ -1,14 +1,34 @@
 <%- include('../partials/header') %>
+
 <h2>Flight Details</h2>
     <section id="show-page">
         <div><b>Airline:</b> &nbsp;<%= flightData.airline %></div>
         <div><b>Airport:</b> &nbsp;<%= flightData.airport %></div>
         <div><b>Flight Number:</b> &nbsp;<%= flightData.flightNo %></div>
         <div><b>Departs: </b> &nbsp;<%= flightData.departs %></div>
-        <div><b>Destination:</b> &nbsp;<%= flightData.destination %></div>
     </section>
 
-
+    <% if (flightData.destinations.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Arrival Information: </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% flightData.destinations.forEach(function(a) { %>
+              <tr>
+                <td><%= a.airport %></td>
+                <td><%= a.arrival %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Destination Yet</h5>
+      <% } %>
+        
 <h2>Add Arrival Info</h2>
     <form action="/flights/<%= flightData.id %>" method="POST">
         <label>Destination
@@ -23,8 +43,8 @@
         </label><br>
       
         <label>Arrival
-            <input type="date" name="departs">
-            <input type="time" name="departs">
+            <input type="date" name="arrivalDate">
+            <input type="time" name="arrivalTime">
         </label><br>
       
         <button type="submit">Add Info</button>
