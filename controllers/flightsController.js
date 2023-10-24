@@ -1,6 +1,7 @@
 // import the model we created from the models file that has
 // what we want
 const flightModel = require('../models/flight')
+const ticketModel = require('../models/ticket')
 
 //Set up the export so that the router will have access to it
 module.exports = {
@@ -61,9 +62,9 @@ async function show(req, res) {
     try {
         // Attempt to get the data for the flight clicked
         const flightData = await flightModel.findById(req.params.id);
-        console.log('Flight Data:', flightData)
+        const ticketData = await ticketModel.find({flight: req.params.id});
         // Render the data on the show.ejs page
-        res.render('flightsFolder/show', { flightData });
+        res.render('flightsFolder/show', { flightData , ticketData});
     } catch (error) {
         // Handle any other errors that might occur during the database query
         console.error(error);

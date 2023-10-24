@@ -14,6 +14,8 @@ var flightsRouter = require('./routes/flightsRouter');
 // import from arrivalRouter
 var arrivalRouter = require('./routes/arrivalRouter')
 
+var ticketRouter = require('./routes/ticketRouter')
+
 var app = express();
 
 // view engine setup
@@ -33,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
 app.use('/flights', arrivalRouter);
+app.use('/', ticketRouter);
 
 
 // catch 404 and forward to error handler

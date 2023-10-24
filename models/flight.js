@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
+const ticketModel = require('./ticket')
+
+
 const destinationSchema = new Schema({
     airport: {
         type: String,
@@ -33,7 +36,10 @@ const flightSchema = new Schema({
             return Date.now() + 365*24*60*60000
         }
     },
-    destinations: [destinationSchema]
+    destinations: [destinationSchema],
+    tickets: [{
+        type: Schema.Types.ObjectId, 
+        ref:'ticketModel'}]
 })
 
 // here we are naming the model 'flightModel' and giving 

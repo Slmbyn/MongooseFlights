@@ -29,6 +29,9 @@
         <h5>No Destination Yet</h5>
       <% } %>
         
+
+    <div>Ticket Details</div>
+       <p> <%= ticketData.seat %></p>
 <h2>Add Arrival Info</h2>
     <form action="/flights/<%= flightData.id %>" method="POST">
         <label>Destination
@@ -48,6 +51,17 @@
         </label><br>
       
         <button type="submit">Add Info</button>
-      
+    </form>
+
+   
+    <form action="/flights/<%= flightData.id %>" method="POST">
+        <label>Seat
+            <input type="string" name="seat">
+        </label>
+        <label>Price
+            <input type="number" name="price">
+        </label>
+            <input type="hidden" name="flight" value=<%=flightData.id%>>
+        <button type="submit">Add Ticket</button>
     </form>
 </body>
