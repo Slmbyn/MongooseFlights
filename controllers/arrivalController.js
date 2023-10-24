@@ -14,7 +14,8 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
     }
-    res.render('flightsFolder/show', { flightData });
-    // res.redirect(`/flightsFolder/show/${arrivalData._id}`)
+    // res.send(flightData);
+    // res.redirect('flightsFolder/show', { flightData });
+    res.redirect(`/flights/${req.params.id}`)
 }
 

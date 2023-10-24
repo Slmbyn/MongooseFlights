@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // requests
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
-app.use('/', arrivalRouter);
+app.use('/flights', arrivalRouter);
 
 
 // catch 404 and forward to error handler

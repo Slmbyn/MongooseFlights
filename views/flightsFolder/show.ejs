@@ -32,7 +32,7 @@
 <h2>Add Arrival Info</h2>
     <form action="/flights/<%= flightData.id %>" method="POST">
         <label>Destination
-          <select name="destinations">
+          <select name="airport">
             <option value="AUS">AUS</option>
             <option value="DFW">DFW</option>
             <option value="DEN">DEN</option>
@@ -43,8 +43,8 @@
         </label><br>
       
         <label>Arrival
-            <input type="date" name="arrivalDate">
-            <input type="time" name="arrivalTime">
+            <input type="date" name="arrival">
+            <!-- <input type="time" name="arrivalTime"> -->
         </label><br>
       
         <button type="submit">Add Info</button>
